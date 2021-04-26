@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'github' => [
+        'client_id' => env('248c7f4a6d0f301afd31'),
+        'client_secret' => env('01c605d67ca6bf384ae1cb9ea9d476d96cd3fcd2'),
+        'redirect' => 'http://localhost:8000/callback/github',
+    ],
 ];

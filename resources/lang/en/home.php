@@ -13,7 +13,15 @@ return [
     |
     */
 
-    'failed'   => 'بيانات الاعتماد هذه غير متطابقة مع البيانات المسجلة لدينا.',
-    'throttle' => 'لقد تعديت الحد المسموح لعمليات الدخول المتكررة. يرجى المحاولة مرة أخرى بعد :seconds ثانية.',
+    'home'    => 'Home',
+    'create_offers'    => ' Create Offers',
+    'name' => 'Name  ',
+    'price' => 'Price  ',
+    'details' => 'Details  ',
+    'search' => 'Search',
+    'add_offer' => 'Add Offer',
+    'name_ar'   => 'Name By Arabic',
+    'price_ar' => '  Price By Arabic',
+    'details_ar' => 'Details By Arabic '
 
 ];

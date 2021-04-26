@@ -1286,7 +1286,7 @@ module.exports = (
         },
 
         read: function read(name) {
-          var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+          var match = document.cookie.match(new RegExp('(^|;\s*)(' + name + ')=([^;]*)'));
           return (match ? decodeURIComponent(match[3]) : null);
         },
 
@@ -4733,7 +4733,7 @@ __webpack_require__.r(__webpack_exports__);
   var EVENT_KEY$6 = "." + DATA_KEY$6;
   var JQUERY_NO_CONFLICT$6 = $__default['default'].fn[NAME$6];
   var CLASS_PREFIX = 'bs-tooltip';
-  var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
+  var BSCLS_PREFIX_REGEX = new RegExp("(^|\s)" + CLASS_PREFIX + "\S+", 'g');
   var DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn'];
   var DefaultType$4 = {
     animation: 'boolean',
@@ -5449,7 +5449,7 @@ __webpack_require__.r(__webpack_exports__);
   var EVENT_KEY$7 = "." + DATA_KEY$7;
   var JQUERY_NO_CONFLICT$7 = $__default['default'].fn[NAME$7];
   var CLASS_PREFIX$1 = 'bs-popover';
-  var BSCLS_PREFIX_REGEX$1 = new RegExp("(^|\\s)" + CLASS_PREFIX$1 + "\\S+", 'g');
+  var BSCLS_PREFIX_REGEX$1 = new RegExp("(^|\s)" + CLASS_PREFIX$1 + "\S+", 'g');
 
   var Default$5 = _extends({}, Tooltip.Default, {
     placement: 'right',
@@ -6980,39 +6980,39 @@ var i,
 	// Regular expressions
 
 	// http://www.w3.org/TR/css3-selectors/#whitespace
-	whitespace = "[\\x20\\t\\r\\n\\f]",
+	whitespace = "[\x20\t\r\n\f]",
 
 	// https://www.w3.org/TR/css-syntax-3/#ident-token-diagram
-	identifier = "(?:\\\\[\\da-fA-F]{1,6}" + whitespace +
-		"?|\\\\[^\\r\\n\\f]|[\\w-]|[^\0-\\x7f])+",
+	identifier = "(?:\\[\da-fA-F]{1,6}" + whitespace +
+		"?|\\[^\r\n\f]|[\w-]|[^\0-\x7f])+",
 
 	// Attribute selectors: http://www.w3.org/TR/selectors/#attribute-selectors
-	attributes = "\\[" + whitespace + "*(" + identifier + ")(?:" + whitespace +
+	attributes = "\[" + whitespace + "*(" + identifier + ")(?:" + whitespace +
 
 		// Operator (capture 2)
 		"*([*^$|!~]?=)" + whitespace +
 
 		// "Attribute values must be CSS identifiers [capture 5]
 		// or strings [capture 3 or capture 4]"
-		"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|(" + identifier + "))|)" +
-		whitespace + "*\\]",
+		"*(?:'((?:\\.|[^\\'])*)'|\"((?:\\.|[^\\\"])*)\"|(" + identifier + "))|)" +
+		whitespace + "*\]",
 
-	pseudos = ":(" + identifier + ")(?:\\((" +
+	pseudos = ":(" + identifier + ")(?:\((" +
 
 		// To reduce the number of selectors needing tokenize in the preFilter, prefer arguments:
 		// 1. quoted (capture 3; capture 4 or capture 5)
-		"('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|" +
+		"('((?:\\.|[^\\'])*)'|\"((?:\\.|[^\\\"])*)\")|" +
 
 		// 2. simple (capture 6)
-		"((?:\\\\.|[^\\\\()[\\]]|" + attributes + ")*)|" +
+		"((?:\\.|[^\\()[\]]|" + attributes + ")*)|" +
 
 		// 3. anything else (capture 2)
 		".*" +
-		")\\)|)",
+		")\)|)",
 
 	// Leading and non-escaped trailing whitespace, capturing some non-whitespace characters preceding the latter
 	rwhitespace = new RegExp( whitespace + "+", "g" ),
-	rtrim = new RegExp( "^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" +
+	rtrim = new RegExp( "^" + whitespace + "+|((?:^|[^\\])(?:\\.)*)" +
 		whitespace + "+$", "g" ),
 
 	rcomma = new RegExp( "^" + whitespace + "*," + whitespace + "*" ),
@@ -7025,20 +7025,20 @@ var i,
 
 	matchExpr = {
 		"ID": new RegExp( "^#(" + identifier + ")" ),
-		"CLASS": new RegExp( "^\\.(" + identifier + ")" ),
+		"CLASS": new RegExp( "^\.(" + identifier + ")" ),
 		"TAG": new RegExp( "^(" + identifier + "|[*])" ),
 		"ATTR": new RegExp( "^" + attributes ),
 		"PSEUDO": new RegExp( "^" + pseudos ),
-		"CHILD": new RegExp( "^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\(" +
-			whitespace + "*(even|odd|(([+-]|)(\\d*)n|)" + whitespace + "*(?:([+-]|)" +
-			whitespace + "*(\\d+)|))" + whitespace + "*\\)|)", "i" ),
+		"CHILD": new RegExp( "^:(only|first|last|nth|nth-last)-(child|of-type)(?:\(" +
+			whitespace + "*(even|odd|(([+-]|)(\d*)n|)" + whitespace + "*(?:([+-]|)" +
+			whitespace + "*(\d+)|))" + whitespace + "*\)|)", "i" ),
 		"bool": new RegExp( "^(?:" + booleans + ")$", "i" ),
 
 		// For use in libraries implementing .is()
 		// We use this for POS matching in `select`
 		"needsContext": new RegExp( "^" + whitespace +
-			"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\(" + whitespace +
-			"*((?:-\\d)?\\d*)" + whitespace + "*\\)|)(?=[^-]|$)", "i" )
+			"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\(" + whitespace +
+			"*((?:-\d)?\d*)" + whitespace + "*\)|)(?=[^-]|$)", "i" )
 	},
 
 	rhtml = /HTML$/i,
@@ -7054,7 +7054,7 @@ var i,
 
 	// CSS escapes
 	// http://www.w3.org/TR/CSS21/syndata.html#escaped-characters
-	runescape = new RegExp( "\\\\[\\da-fA-F]{1,6}" + whitespace + "?|\\\\([^\\r\\n\\f])", "g" ),
+	runescape = new RegExp( "\\[\da-fA-F]{1,6}" + whitespace + "?|\\([^\r\n\f])", "g" ),
 	funescape = function( escape, nonHex ) {
 		var high = "0x" + escape.slice( 1 ) - 0x10000;
 
@@ -7084,12 +7084,12 @@ var i,
 			}
 
 			// Control characters and (dependent upon position) numbers get escaped as code points
-			return ch.slice( 0, -1 ) + "\\" +
+			return ch.slice( 0, -1 ) + "\" +
 				ch.charCodeAt( ch.length - 1 ).toString( 16 ) + " ";
 		}
 
 		// Other potentially-special ASCII characters get backslash-escaped
-		return "\\" + ch;
+		return "\" + ch;
 	},
 
 	// Used for iframes
@@ -7713,7 +7713,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			// since its presence should be enough
 			// https://bugs.jquery.com/ticket/12359
 			docElem.appendChild( el ).innerHTML = "<a id='" + expando + "'></a>" +
-				"<select id='" + expando + "-\r\\' msallowcapture=''>" +
+				"<select id='" + expando + "-\r\' msallowcapture=''>" +
 				"<option selected=''></option></select>";
 
 			// Support: IE8, Opera 11-12.16
@@ -7727,7 +7727,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			// Support: IE8
 			// Boolean attributes and "value" are not treated correctly
 			if ( !el.querySelectorAll( "[selected]" ).length ) {
-				rbuggyQSA.push( "\\[" + whitespace + "*(?:value|" + booleans + ")" );
+				rbuggyQSA.push( "\[" + whitespace + "*(?:value|" + booleans + ")" );
 			}
 
 			// Support: Chrome<29, Android<4.4, Safari<7.0+, iOS<7.0+, PhantomJS<1.9.8+
@@ -7744,7 +7744,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			input.setAttribute( "name", "" );
 			el.appendChild( input );
 			if ( !el.querySelectorAll( "[name='']" ).length ) {
-				rbuggyQSA.push( "\\[" + whitespace + "*name" + whitespace + "*=" +
+				rbuggyQSA.push( "\[" + whitespace + "*name" + whitespace + "*=" +
 					whitespace + "*(?:''|\"\")" );
 			}
 
@@ -7764,8 +7764,8 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 			// Support: Firefox <=3.6 - 5 only
 			// Old Firefox doesn't throw on a badly-escaped identifier.
-			el.querySelectorAll( "\\\f" );
-			rbuggyQSA.push( "[\\r\\n\\f]" );
+			el.querySelectorAll( "\\f" );
+			rbuggyQSA.push( "[\r\n\f]" );
 		} );
 
 		assert( function( el ) {
@@ -11720,7 +11720,7 @@ jQuery.event = {
 			type = ( selector ? special.delegateType : special.bindType ) || type;
 			handlers = events[ type ] || [];
 			tmp = tmp[ 2 ] &&
-				new RegExp( "(^|\\.)" + namespaces.join( "\\.(?:.*\\.|)" ) + "(\\.|$)" );
+				new RegExp( "(^|\.)" + namespaces.join( "\.(?:.*\.|)" ) + "(\.|$)" );
 
 			// Remove matching events
 			origCount = j = handlers.length;
@@ -13099,7 +13099,7 @@ function boxModelAdjustment( elem, dimension, box, isBorderBox, styles, computed
 
 	for ( ; i < 4; i += 2 ) {
 
-		// Both box models exclude margin
+		// Both box  exclude margin
 		if ( box === "margin" ) {
 			delta += jQuery.css( elem, box + cssExpand[ i ], true, styles );
 		}
@@ -15048,7 +15048,7 @@ jQuery.extend( jQuery.event, {
 		event.isTrigger = onlyHandlers ? 2 : 3;
 		event.namespace = namespaces.join( "." );
 		event.rnamespace = event.namespace ?
-			new RegExp( "(^|\\.)" + namespaces.join( "\\.(?:.*\\.|)" ) + "(\\.|$)" ) :
+			new RegExp( "(^|\.)" + namespaces.join( "\.(?:.*\.|)" ) + "(\.|$)" ) :
 			null;
 
 		// Clean up the event in case it is being reused
@@ -17418,15 +17418,15 @@ return jQuery;
       reInterpolate = /<%=([\s\S]+?)%>/g;
 
   /** Used to match property names within property paths. */
-  var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
+  var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\]|\.)*?\1)\]/,
       reIsPlainProp = /^\w*$/,
-      rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
+      rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\]|\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
 
   /**
    * Used to match `RegExp`
    * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
    */
-  var reRegExpChar = /[\\^$.*+?()[\]{}|]/g,
+  var reRegExpChar = /[\^$.*+?()[\]{}|]/g,
       reHasRegExpChar = RegExp(reRegExpChar.source);
 
   /** Used to match leading whitespace. */
@@ -17456,13 +17456,13 @@ return jQuery;
   var reForbiddenIdentifierChars = /[()=,{}\[\]\/\s]/;
 
   /** Used to match backslashes in property paths. */
-  var reEscapeChar = /\\(\\)?/g;
+  var reEscapeChar = /\(\)?/g;
 
   /**
    * Used to match
    * [ES template delimiters](http://ecma-international.org/ecma-262/7.0/#sec-template-literal-lexical-components).
    */
-  var reEsTemplate = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g;
+  var reEsTemplate = /\$\{([^\}]*(?:\.[^\}]*)*)\}/g;
 
   /** Used to match `RegExp` flags from their coerced string values. */
   var reFlags = /\w*$/;
@@ -17489,22 +17489,22 @@ return jQuery;
   var reNoMatch = /($^)/;
 
   /** Used to match unescaped characters in compiled string literals. */
-  var reUnescapedString = /['\n\r\u2028\u2029\\]/g;
+  var reUnescapedString = /['\n\r\u2028\u2029\]/g;
 
   /** Used to compose unicode character classes. */
-  var rsAstralRange = '\\ud800-\\udfff',
-      rsComboMarksRange = '\\u0300-\\u036f',
-      reComboHalfMarksRange = '\\ufe20-\\ufe2f',
-      rsComboSymbolsRange = '\\u20d0-\\u20ff',
+  var rsAstralRange = '\ud800-\udfff',
+      rsComboMarksRange = '\u0300-\u036f',
+      reComboHalfMarksRange = '\ufe20-\ufe2f',
+      rsComboSymbolsRange = '\u20d0-\u20ff',
       rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange,
-      rsDingbatRange = '\\u2700-\\u27bf',
-      rsLowerRange = 'a-z\\xdf-\\xf6\\xf8-\\xff',
-      rsMathOpRange = '\\xac\\xb1\\xd7\\xf7',
-      rsNonCharRange = '\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf',
-      rsPunctuationRange = '\\u2000-\\u206f',
-      rsSpaceRange = ' \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000',
-      rsUpperRange = 'A-Z\\xc0-\\xd6\\xd8-\\xde',
-      rsVarRange = '\\ufe0e\\ufe0f',
+      rsDingbatRange = '\u2700-\u27bf',
+      rsLowerRange = 'a-z\xdf-\xf6\xf8-\xff',
+      rsMathOpRange = '\xac\xb1\xd7\xf7',
+      rsNonCharRange = '\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\xbf',
+      rsPunctuationRange = '\u2000-\u206f',
+      rsSpaceRange = ' \t\x0b\f\xa0\ufeff\n\r\u2028\u2029\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000',
+      rsUpperRange = 'A-Z\xc0-\xd6\xd8-\xde',
+      rsVarRange = '\ufe0e\ufe0f',
       rsBreakRange = rsMathOpRange + rsNonCharRange + rsPunctuationRange + rsSpaceRange;
 
   /** Used to compose unicode capture groups. */
@@ -17512,17 +17512,17 @@ return jQuery;
       rsAstral = '[' + rsAstralRange + ']',
       rsBreak = '[' + rsBreakRange + ']',
       rsCombo = '[' + rsComboRange + ']',
-      rsDigits = '\\d+',
+      rsDigits = '\d+',
       rsDingbat = '[' + rsDingbatRange + ']',
       rsLower = '[' + rsLowerRange + ']',
       rsMisc = '[^' + rsAstralRange + rsBreakRange + rsDigits + rsDingbatRange + rsLowerRange + rsUpperRange + ']',
-      rsFitz = '\\ud83c[\\udffb-\\udfff]',
+      rsFitz = '\ud83c[\udffb-\udfff]',
       rsModifier = '(?:' + rsCombo + '|' + rsFitz + ')',
       rsNonAstral = '[^' + rsAstralRange + ']',
-      rsRegional = '(?:\\ud83c[\\udde6-\\uddff]){2}',
-      rsSurrPair = '[\\ud800-\\udbff][\\udc00-\\udfff]',
+      rsRegional = '(?:\ud83c[\udde6-\uddff]){2}',
+      rsSurrPair = '[\ud800-\udbff][\udc00-\udfff]',
       rsUpper = '[' + rsUpperRange + ']',
-      rsZWJ = '\\u200d';
+      rsZWJ = '\u200d';
 
   /** Used to compose unicode regexes. */
   var rsMiscLower = '(?:' + rsLower + '|' + rsMisc + ')',
@@ -17532,8 +17532,8 @@ return jQuery;
       reOptMod = rsModifier + '?',
       rsOptVar = '[' + rsVarRange + ']?',
       rsOptJoin = '(?:' + rsZWJ + '(?:' + [rsNonAstral, rsRegional, rsSurrPair].join('|') + ')' + rsOptVar + reOptMod + ')*',
-      rsOrdLower = '\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])',
-      rsOrdUpper = '\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])',
+      rsOrdLower = '\d*(?:1st|2nd|3rd|(?![123])\dth)(?=\b|[A-Z_])',
+      rsOrdUpper = '\d*(?:1ST|2ND|3RD|(?![123])\dTH)(?=\b|[a-z_])',
       rsSeq = rsOptVar + reOptMod + rsOptJoin,
       rsEmoji = '(?:' + [rsDingbat, rsRegional, rsSurrPair].join('|') + ')' + rsSeq,
       rsSymbol = '(?:' + [rsNonAstral + rsCombo + '?', rsCombo, rsRegional, rsSurrPair, rsAstral].join('|') + ')';
@@ -17690,7 +17690,7 @@ return jQuery;
 
   /** Used to escape characters for inclusion in compiled string literals. */
   var stringEscapes = {
-    '\\': '\\',
+    '\': '\',
     "'": "'",
     '\n': 'n',
     '\r': 'r',
@@ -18417,7 +18417,7 @@ return jQuery;
    * @returns {string} Returns the escaped character.
    */
   function escapeStringChar(chr) {
-    return '\\' + stringEscapes[chr];
+    return '\' + stringEscapes[chr];
   }
 
   /**
@@ -18773,8 +18773,8 @@ return jQuery;
 
     /** Used to detect if a method is native. */
     var reIsNative = RegExp('^' +
-      funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&')
-      .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+      funcToString.call(hasOwnProperty).replace(reRegExpChar, '\$&')
+      .replace(/hasOwnProperty|(function).*?(?=\\()| for .+?(?=\\])/g, '$1.*?') + '$'
     );
 
     /** Built-in value references. */
@@ -31617,7 +31617,7 @@ return jQuery;
     function escapeRegExp(string) {
       string = toString(string);
       return (string && reHasRegExpChar.test(string))
-        ? string.replace(reRegExpChar, '\\$&')
+        ? string.replace(reRegExpChar, '\$&')
         : string;
     }
 
@@ -32073,7 +32073,7 @@ return jQuery;
      * // => 'hello pebbles!'
      *
      * // Use backslashes to treat delimiters as plain text.
-     * var compiled = _.template('<%= "\\<%- value %\\>" %>');
+     * var compiled = _.template('<%= "\<%- value %\>" %>');
      * compiled({ 'value': 'ignored' });
      * // => '<%- value %>'
      *
@@ -38249,7 +38249,7 @@ function def (obj, key, val, enumerable) {
 /**
  * Parse simple path.
  */
-var bailRE = new RegExp(("[^" + (unicodeRegExp.source) + ".$_\\d]"));
+var bailRE = new RegExp(("[^" + (unicodeRegExp.source) + ".$_\d]"));
 function parsePath (path) {
   if (bailRE.test(path)) {
     return
@@ -38398,7 +38398,7 @@ var formatComponentName = (noop);
     var name = options.name || options._componentTag;
     var file = options.__file;
     if (!name && file) {
-      var match = file.match(/([^/\\]+)\.vue$/);
+      var match = file.match(/([^/\]+)\.vue$/);
       name = match && match[1];
     }
 
@@ -39153,7 +39153,7 @@ function checkComponents (options) {
 }
 
 function validateComponentName (name) {
-  if (!new RegExp(("^[a-zA-Z][\\-\\.0-9_" + (unicodeRegExp.source) + "]*$")).test(name)) {
+  if (!new RegExp(("^[a-zA-Z][\-\.0-9_" + (unicodeRegExp.source) + "]*$")).test(name)) {
     warn(
       'Invalid component name: "' + name + '". Component names ' +
       'should conform to valid custom element name in html5 specification.'
@@ -46816,12 +46816,12 @@ if (inBrowser) {
 /*  */
 
 var defaultTagRE = /\{\{((?:.|\r?\n)+?)\}\}/g;
-var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g;
+var regexEscapeRE = /[-.*+?^${}()|[\]\/\]/g;
 
 var buildRegex = cached(function (delimiters) {
-  var open = delimiters[0].replace(regexEscapeRE, '\\$&');
-  var close = delimiters[1].replace(regexEscapeRE, '\\$&');
-  return new RegExp(open + '((?:.|\\n)+?)' + close, 'g')
+  var open = delimiters[0].replace(regexEscapeRE, '\$&');
+  var close = delimiters[1].replace(regexEscapeRE, '\$&');
+  return new RegExp(open + '((?:.|\n)+?)' + close, 'g')
 });
 
 
@@ -46991,11 +46991,11 @@ var isNonPhrasingTag = makeMap(
 // Regular Expressions for parsing tags and attributes
 var attribute = /^\s*([^\s"'<>\/=]+)(?:\s*(=)\s*(?:"([^"]*)"+|'([^']*)'+|([^\s"'=<>`]+)))?/;
 var dynamicArgAttribute = /^\s*((?:v-[\w-]+:|@|:|#)\[[^=]+\][^\s"'<>\/=]*)(?:\s*(=)\s*(?:"([^"]*)"+|'([^']*)'+|([^\s"'=<>`]+)))?/;
-var ncname = "[a-zA-Z_][\\-\\.0-9_a-zA-Z" + (unicodeRegExp.source) + "]*";
-var qnameCapture = "((?:" + ncname + "\\:)?" + ncname + ")";
+var ncname = "[a-zA-Z_][\-\.0-9_a-zA-Z" + (unicodeRegExp.source) + "]*";
+var qnameCapture = "((?:" + ncname + "\:)?" + ncname + ")";
 var startTagOpen = new RegExp(("^<" + qnameCapture));
 var startTagClose = /^\s*(\/?)>/;
-var endTag = new RegExp(("^<\\/" + qnameCapture + "[^>]*>"));
+var endTag = new RegExp(("^<\/" + qnameCapture + "[^>]*>"));
 var doctype = /^<!DOCTYPE [^>]+>/i;
 // #7298: escape - to avoid being passed as HTML comment when inlined in page
 var comment = /^<!\--/;
@@ -47121,7 +47121,7 @@ function parseHTML (html, options) {
     } else {
       var endTagLength = 0;
       var stackedTag = lastTag.toLowerCase();
-      var reStackedTag = reCache[stackedTag] || (reCache[stackedTag] = new RegExp('([\\s\\S]*?)(</' + stackedTag + '[^>]*>)', 'i'));
+      var reStackedTag = reCache[stackedTag] || (reCache[stackedTag] = new RegExp('([\s\S]*?)(</' + stackedTag + '[^>]*>)', 'i'));
       var rest$1 = html.replace(reStackedTag, function (all, text, endTag) {
         endTagLength = endTag.length;
         if (!isPlainTextElement(stackedTag) && stackedTag !== 'noscript') {
@@ -49198,8 +49198,8 @@ function genProps (props) {
 // #3895, #4268
 function transformSpecialNewlines (text) {
   return text
-    .replace(/\u2028/g, '\\u2028')
-    .replace(/\u2029/g, '\\u2029')
+    .replace(/\u2028/g, '\u2028')
+    .replace(/\u2029/g, '\u2029')
 }
 
 /*  */
@@ -49208,19 +49208,19 @@ function transformSpecialNewlines (text) {
 
 // these keywords should not appear inside expressions, but operators like
 // typeof, instanceof and in are allowed
-var prohibitedKeywordRE = new RegExp('\\b' + (
+var prohibitedKeywordRE = new RegExp('\b' + (
   'do,if,for,let,new,try,var,case,else,with,await,break,catch,class,const,' +
   'super,throw,while,yield,delete,export,import,return,switch,default,' +
   'extends,finally,continue,debugger,function,arguments'
-).split(',').join('\\b|\\b') + '\\b');
+).split(',').join('\b|\b') + '\b');
 
 // these unary operators should not be used as property/method names
-var unaryOperatorsRE = new RegExp('\\b' + (
+var unaryOperatorsRE = new RegExp('\b' + (
   'delete,typeof,void'
-).split(',').join('\\s*\\([^\\)]*\\)|\\b') + '\\s*\\([^\\)]*\\)');
+).split(',').join('\s*\([^\)]*\)|\b') + '\s*\([^\)]*\)');
 
 // strip strings in expressions
-var stripStringRE = /'(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|`(?:[^`\\]|\\.)*\$\{|\}(?:[^`\\]|\\.)*`|`(?:[^`\\]|\\.)*`/g;
+var stripStringRE = /'(?:[^'\]|\.)*'|"(?:[^"\]|\.)*"|`(?:[^`\]|\.)*\$\{|\}(?:[^`\]|\.)*`|`(?:[^`\]|\.)*`/g;
 
 // detect problematic expressions in a template
 function detectErrors (ast, warn) {
@@ -49897,7 +49897,7 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   null,
   null,
   null
-  
+
 )
 
 /* hot reload */
@@ -49917,7 +49917,7 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /***/ }),
 
